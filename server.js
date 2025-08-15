@@ -24,26 +24,26 @@ const Feedback = mongoose.model('Feedback', feedbackSchema);
 // Endpoint to submit feedback
 app.post('/feedback', async (req, res) => {
   try {
-    const feedback = new Feedback(req.body);
-    await feedback.save();
-    res.status(201).send(feedback);
+    const feedback = new Feedback(req.body); // Create new feedback instance
+    await feedback.save(); // Save feedback to database
+    res.status(201).send(feedback); // Respond with created feedback
   } catch (error) {
-    res.status(400).send({ message: 'Error saving feedback', error });
+    res.status(400).send({ message: 'Error saving feedback', error }); // Error handling
   }
 });
 
 // Endpoint to fetch all feedback
 app.get('/feedback', async (req, res) => {
   try {
-    const feedback = await Feedback.find();
-    res.send(feedback);
+    const feedback = await Feedback.find(); // Fetch all feedback from database
+    res.send(feedback); // Respond with the list of feedback
   } catch (error) {
-    res.status(500).send({ message: 'Error fetching feedback', error });
+    res.status(500).send({ message: 'Error fetching feedback', error }); // Error handling
   }
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000; // Define port for server
 // Start the server
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`); // Log server start
 });
