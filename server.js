@@ -19,14 +19,22 @@ const feedbackSchema = new mongoose.Schema({
 const Feedback = mongoose.model('Feedback', feedbackSchema);
 
 app.post('/feedback', async (req, res) => {
-  const feedback = new Feedback(req.body);
-  await feedback.save();
-  res.status(201).send(feedback);
+  try {
+    const feedback = new Feedback(req.body);
+    await feedback.save();
+    res.status(201).send(feedback);
+  } catch (error) {
+    res.status(400).send({ message: 'Error saving feedback', error });
+  }
 });
 
 app.get('/feedback', async (req, res) => {
-  const feedback = await Feedback.find();
-  res.send(feedback);
+  try {
+    const feedback = await Feedback.find();
+    res.send(feedback);
+  } catch (error) {
+    res.status(500).send({ message: 'Error fetching feedback', error });
+  }
 });
 
 const PORT = process.env.PORT || 5000;
