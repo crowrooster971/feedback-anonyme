@@ -5,15 +5,15 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js"  // Utilise nodemon pour le développement
   },
   "dependencies": {
-    "express": "^5.0.2",
-    "mongoose": "^6.5.0", 
-    "body-parser": "^1.19.1"
+    "express": "^5.0.2",  // Framework web pour Node.js
+    "mongoose": "^6.5.0", // Bibliothèque de modélisation MongoDB
+    "body-parser": "^1.19.1"  // Middleware pour parser le corps des requêtes HTTP
   },
   "devDependencies": {
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15"  // Outil de développement qui surveille les changements des fichiers et redémarre automatiquement le serveur
   },
   "license": "MIT"
 }
