@@ -5,19 +5,23 @@ const bodyParser = require('body-parser');
 const app = express();
 app.use(bodyParser.json());
 
+// Connect to MongoDB database
 mongoose.connect('mongodb://localhost/feedback-anonyme', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
 
+// Define feedback schema
 const feedbackSchema = new mongoose.Schema({
   product: String,
   comment: String,
   createdAt: { type: Date, default: Date.now }
 });
 
+// Create Feedback model
 const Feedback = mongoose.model('Feedback', feedbackSchema);
 
+// Endpoint to submit feedback
 app.post('/feedback', async (req, res) => {
   try {
     const feedback = new Feedback(req.body);
@@ -28,6 +32,7 @@ app.post('/feedback', async (req, res) => {
   }
 });
 
+// Endpoint to fetch all feedback
 app.get('/feedback', async (req, res) => {
   try {
     const feedback = await Feedback.find();
