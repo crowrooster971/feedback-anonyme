@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "express": "^5.0.2",
-    "mongoose": "^6.0.1", // Update mongoose to a more stable version
+    "mongoose": "^6.5.0", // Updated mongoose to a more stable version
     "body-parser": "^1.19.1"
   },
   "devDependencies": {
